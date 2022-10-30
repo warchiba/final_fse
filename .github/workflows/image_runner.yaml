@@ -17,3 +17,6 @@ jobs:
             -
                 name: Run the image
                 run: docker run final_fse_image
+            -
+                name: Run commands
+                run: cd /app && make
