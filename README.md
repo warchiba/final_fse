@@ -1,6 +1,14 @@
 
 # Final project of the course "Foundation of Software Engineering" 
 ## Team 5
+People:
+1. Andrey Galichin
+2. Alexander Kharitonov
+3. Kira Kuznetsova
+4. Anton Labutin
+5. Artem Makhin
+6. Dawit Sefiw
+
 
 This project is about finding the smallest possible square the pieces can be arranged in and prints it out.
 Possible input:
