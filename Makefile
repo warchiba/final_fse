@@ -40,7 +40,7 @@ _SRC =	main.c \
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)/libft.a
-	gcc $^ $(LIBFT)/libft.a -o $@
+	gcc $^ -L $(LIBFT) -lft -o $@
 
 $(ODIR)/%.o: $(SDIR)/%.c $(DEPS) -I ./libft/includes/
 	@mkdir -p $(dir $@)

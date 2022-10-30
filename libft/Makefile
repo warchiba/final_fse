@@ -11,21 +11,22 @@
 # **************************************************************************** #
 
 NAME = libft.a
-INCLUDE = include/
-FUNC = ft_*.c
-OBJ = ft_*.o
+SRCS = ./src/*.c
+OBJS = ./*.o
+HDR = includes/
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
-
+	
 $(NAME):
-	gcc -Wall -Wextra -Werror -c $(FUNC) -I./libft.h
-	ar rc $(NAME) $(OBJ)
+	gcc $(SRCS) $(FLAGS) -I$(HDR) -c 
+	ar -rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-clean:
-	/bin/rm -Rf $(OBJ)
+clean: 
+	/bin/rm -f $(OBJS)
 
 fclean: clean
-	/bin/rm -Rf $(NAME)
+	/bin/rm -f $(NAME)
 
 re: fclean all
