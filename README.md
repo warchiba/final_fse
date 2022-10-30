@@ -45,7 +45,6 @@ Then run the program with the command: `./fillit samples/input_file`\
 You can also build docker image and run project inside it.\
 `docker build .`\
 `docker run -it <dicker_image_name> /bin/bash`\
-`make`\
 `./fillit samples/input_file`\
 If you have problems - try to do `make fclean && make fclean -C libft/`
 
