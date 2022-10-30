@@ -18,5 +18,8 @@ jobs:
                 name: Run the image
                 run: docker run final_fse_image
             -
-                name: Run commands
+                name: make executable
                 run: make
+            -
+                name: Run a test file
+                run: ./fillit samples/full
