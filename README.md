@@ -1,12 +1,50 @@
 
-# Final project of the course "Foundation of Sowfware Engineering" 
+# Final project of the course "Foundation of Software Engineering" 
 ## Team 5
 
-This project is about creating a simplified 3D graphic representation of a relief landscape.
+This project is about finding the smallest possible square the pieces can be arranged in and prints it out.
+Possible input:
+```
+...#
+...#
+...#
+...#
+
+....
+....
+....
+####
+
+.###
+...#
+....
+....
+
+....
+..##
+.##.
+....
+```
+Output:
+```
+ABBBB
+ACCC.
+A..C.
+ADD..
+DD...
+```
+
 
 ## Usage
 
-Clone the project: 
-Compile using the command: 
-Then run the program with the command: 
+Clone the project: `git clone https://github.com/warchiba/final_fse.git`\
+Compile using the command: `cd final_fse && make`\
+Then run the program with the command: `./fillit samples/input_file`\
+
+### Dockerfile
+You can also build docker image and run project inside it.\
+`docker build .`\
+`docker run -it <dicker_image_name> /bin/bash`\
+`make`\
+`./fillit samples/input_file`\
 
