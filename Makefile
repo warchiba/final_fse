@@ -3,30 +3,65 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: warchiba <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: whorpe <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/09/07 21:07:13 by warchiba          #+#    #+#              #
-#    Updated: 2019/09/18 13:40:52 by warchiba         ###   ########.fr        #
+#    Created: 2019/11/05 23:16:58 by whorpe            #+#    #+#              #
+#    Updated: 2019/11/05 23:32:54 by whorpe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-INCLUDE = include/
-FUNC = main.c draw.c readfile.c get_next_line.c projection.c helptools.c
-OBJ = main.o draw.o readfile.o get_next_line.o projection.o helptools.o
+CC = gcc
+
+CFLAGS = -Wall -Wextra -Werror -I $(IDIR) -I $(LIBFT)/includes/
+
+IDIR = includes/
+SDIR = src
+ODIR = src
+LIBFT = libft
+
+NAME = fillit
+
+DEPS = $(IDIR)/fillit.h
+
+OBJ = $(patsubst %.c,$(ODIR)/%.o,$(_SRC))
+
+SRC = $(patsubst %,$(SDIR)/%,$(_SRC)))
+
+_SRC =	main.c \
+		mainsolve.c \
+		reader.c \
+		solve.c \
+		supportfunc.c \
+		add_list.c \
+		structure.c
+
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
-$(NAME):
-	gcc  -Wall -Wextra -Werror $(FUNC) -L minilibx/ -lmlx -L libft/ -lft -o fdf -framework OpenGL -framework AppKit
+$(NAME): $(OBJ) $(LIBFT)/libft.a
+	gcc $^ $(LIBFT)/libft.a -o $@
 
-clean:
-	/bin/rm -Rf $(OBJ)
+$(ODIR)/%.o: $(SDIR)/%.c $(DEPS) -I ./libft/includes/
+	@mkdir -p $(dir $@)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
-fclean: clean
-	/bin/rm -Rf $(NAME)
+$(LIBFT)/libft.a:
+	make -C libft/
 
-re: fclean all
+clean: cleanlib
+	rm -f $(OBJ)
 
-norme:
-	norminette $(FUNC) fdf.h
+fclean:	clean fcleanlib
+	rm -f $(NAME)
+
+re:	fclean all
+
+cleanlib:
+	make clean -C libft/
+
+fcleanlib:
+	make fclean -C libft/
+
+relib:
+	make re -C libft/
