@@ -1,0 +1,19 @@
+on:
+    push
+jobs:
+    image-builder:
+        name: build image
+        runs-on: ubuntu-latest
+        steps:
+            -
+                name: Checkout current repo
+                uses: actions/checkout@v3
+            -
+                name: Use the Dockerfile to build an image
+                run: docker build -t final_fse_image .
+            -
+                name: List docker images
+                run: docker images
+            -
+                name: Run the image
+                run: docker run --rm -t final_fse_image
